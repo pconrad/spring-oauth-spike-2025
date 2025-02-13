@@ -12,12 +12,23 @@ public class HomeController {
     @GetMapping("/")
     public String home() {
         log.info("HomeController.home() called");
-        return "Welcome to the Home Page!";
+        return "<h1>Home Page</h1>" + links();
     }
 
     @GetMapping("/secured")
     public String secured() {
         log.info("HomeController.home() called");
-        return "Welcome to the Secured Page!";
+        return "<h1>Welcome to the Secured Page!</h1>" + links();
+    }
+
+    public String links() {
+        return """
+                <ul>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/secured'>Secured</a></li>
+                <li><a href='/login'>Login</a></li>
+                <li><a href='/logout'>Logout</a></li>
+                </ul>
+                """;
     }
 }
